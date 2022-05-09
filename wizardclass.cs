@@ -4,7 +4,7 @@ namespace Wizard
 {
     class Start
     {
-        static void Main(string []args)
+        static void KnightSetup(string []args)
         {
 
         }
