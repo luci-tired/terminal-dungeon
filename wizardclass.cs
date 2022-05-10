@@ -2,11 +2,16 @@ using System;
 
 namespace Wizard
 {
-    class Start
+    class WizardClass
     {
-        static void KnightSetup(string []args)
-        {
+        int exp;
+        int lvl;
+        int atk;
+        int hp;
 
+        public WizardClass(int _atk, int _hp)
+        {
+            // Incomplete
         }
     }
 }

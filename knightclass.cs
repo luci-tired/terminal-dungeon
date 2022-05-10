@@ -2,11 +2,16 @@ using System;
 
 namespace Knight
 {
-    class Start
+    class KnightClass
     {
-        static void KnightSetup(string []args)
-        {
+        int exp;
+        int lvl;
+        int atk;
+        int hp;
 
+        public KnightClass(int _atk, int _hp)
+        {
+            // Incomplete
         }
     }
 }
