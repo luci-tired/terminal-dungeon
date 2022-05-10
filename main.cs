@@ -19,11 +19,8 @@ namespace terminaldungeon
 
             Console.Clear();
 
-            Console.Write("Please enter a name : ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            string name = Console.ReadLine();
-            Console.ResetColor();
-            Console.Clear();
+            string name = InputName(); // Gets player name, will be used later for leaderboard
+
 
             GameSetup();
             
@@ -31,17 +28,18 @@ namespace terminaldungeon
 
         static void GameSetup()
         {
+            Console.Clear();
             Console.Write("\nPlease select a class\n 0) Wizard\n 1) Knight\n\n");
             Console.ForegroundColor = ConsoleColor.Green;
 
             string input = SelectNumb();
             if (input == "0")
             {
-                Console.WriteLine("0");
+                // Select wizard class
             }
             else if (input == "1")
             {
-                Console.WriteLine("1");
+                // Select knight class
             }
             else
             {
@@ -58,10 +56,30 @@ namespace terminaldungeon
             if (Console.ReadKey(true).Key == key)
             {
                 // Continue to code
+                return;
             }
             else
             {
                 WaitForKey(key);
+            }
+        }
+        static string InputName()
+        {
+            Console.Clear();
+            Console.ResetColor();
+            Console.Write("Please enter a name : ");
+            Console.ForegroundColor = ConsoleColor.Green;
+
+
+            string _name = Console.ReadLine();
+            if(!string.IsNullOrEmpty(_name))
+            {
+                Console.ResetColor();
+                return _name;
+            }
+            else
+            {
+                return InputName();
             }
         }
 
