@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Wizard;
+using Knight;
 
 
 namespace terminaldungeon
@@ -36,10 +38,22 @@ namespace terminaldungeon
             if (input == "0")
             {
                 // Select wizard class
+                WizardClass player01 = new WizardClass(2, 5, 50, 0, 1, 5);
+                Console.Clear();
+                
+                // Testing code
+                // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
+                // player01.addXp(5);
+                // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
+                // player01.addXp(5);
+                // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
+                //
+                
             }
             else if (input == "1")
             {
                 // Select knight class
+                KnightClass player01 = new KnightClass(2, 5, 50, 0, 1, 5);
             }
             else
             {
