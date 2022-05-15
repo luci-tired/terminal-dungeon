@@ -39,8 +39,9 @@ namespace TerminalDungeonMain
             {
                 // Select wizard class
                 WizardClass player01 = new WizardClass(2, 5, 50, 0, 1, 5);
+                Console.ResetColor();
                 Console.Clear();
-                
+                PathSelect();
                 // Testing code
                 // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
                 // player01.addXp(5);
@@ -65,6 +66,35 @@ namespace TerminalDungeonMain
 
         }
 
+        static void PathSelect()
+        {
+            Random rnd = new Random();
+            int rndChance = rnd.Next(0,100);
+
+            if (rndChance < 100) // 6.25% chance
+            {
+                Console.Clear();
+                NothingClass.nothingPath();
+            }
+
+            Console.WriteLine("\nPress Enter key to continue. Press K to view your stats.");
+            int keyEnter = WaitForKeyDual(ConsoleKey.Enter, ConsoleKey.K);
+
+            if (keyEnter == 1)
+            {
+                // Continue to code
+            }
+
+            if (keyEnter == 2)
+            {
+                Console.Clear();
+                Console.WriteLine("Test\nPress any key to continue.");
+                Console.ReadKey();
+            }
+
+            PathSelect();
+        }
+
         static void WaitForKey(ConsoleKey key)
         {
             if (Console.ReadKey(true).Key == key)
@@ -77,7 +107,25 @@ namespace TerminalDungeonMain
                 WaitForKey(key);
             }
         }
-        
+
+        static int WaitForKeyDual(ConsoleKey key1, ConsoleKey key2)
+        {
+            if (Console.ReadKey(true).Key == key1)
+            {
+                // Continue to code
+                return 1;
+            }
+            else if (Console.ReadKey(true).Key == key2)
+            {
+                // Continue to code
+                return 2;
+            }
+            else
+            {
+                return WaitForKeyDual(key1, key2);
+            }
+        }
+
         static string InputName()
         {
             Console.Clear();
