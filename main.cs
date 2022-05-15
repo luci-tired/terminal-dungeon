@@ -2,11 +2,12 @@
 using System.IO;
 using Wizard;
 using Knight;
+using Nothing;
 
 
-namespace terminaldungeon
+namespace TerminalDungeonMain
 {
-    class Start
+    class MainClass
     {
         static void Main(string []args)
         {
@@ -15,7 +16,6 @@ namespace terminaldungeon
 
             Console.SetCursorPosition(Console.WindowHeight - "Press Enter to begin...".Length / 2, Console.CursorTop + 1);
             Console.WriteLine("Press Enter to begin...");
-            
 
             WaitForKey(ConsoleKey.Enter);
 
@@ -77,6 +77,7 @@ namespace terminaldungeon
                 WaitForKey(key);
             }
         }
+        
         static string InputName()
         {
             Console.Clear();
