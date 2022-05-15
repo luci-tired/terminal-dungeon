@@ -2,7 +2,7 @@ using System;
 
 namespace Wizard
 {
-    class WizardClass
+    public class WizardClass
     {
         public int xp;
         public int lvl;

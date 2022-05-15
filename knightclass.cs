@@ -2,7 +2,7 @@ using System;
 
 namespace Knight
 {
-    class KnightClass
+    public class KnightClass
     {
         public int xp;
         public int lvl;
