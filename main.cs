@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
-using Wizard;
-using Knight;
+using Player;
 using Nothing;
 
 
@@ -9,6 +8,9 @@ namespace TerminalDungeonMain
 {
     class MainClass
     {
+        public PlayerClass wizPlayer01 = new WizardClass(2, 5, 50, 0, 1, 5);
+        public PlayerClass kniPlayer01 = new KnightClass(2, 5, 50, 0, 1, 5);
+
         static void Main(string []args)
         {
             Console.SetCursorPosition(Console.WindowHeight - "Terminal Dungeon".Length / 2, Console.CursorTop); //Center text on screen
@@ -21,8 +23,7 @@ namespace TerminalDungeonMain
 
             Console.Clear();
 
-            string name = InputName(); // Gets player name, will be used later for leaderboard
-
+            string _name = InputName(); // Gets player name, will be used later for leaderboard
 
             GameSetup();
             
@@ -38,23 +39,17 @@ namespace TerminalDungeonMain
             if (input == "0")
             {
                 // Select wizard class
-                WizardClass player01 = new WizardClass(2, 5, 50, 0, 1, 5);
                 Console.ResetColor();
                 Console.Clear();
-                PathSelect();
-                // Testing code
-                // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
-                // player01.addXp(5);
-                // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
-                // player01.addXp(5);
-                // Console.WriteLine("Lvl = " + player01.lvl + ", Xp = " + player01.xp + " of " + player01.lvlLmt);
-                //
+                PathSelect(1,1);
                 
             }
             else if (input == "1")
             {
                 // Select knight class
-                KnightClass player01 = new KnightClass(2, 5, 50, 0, 1, 5);
+                Console.ResetColor();
+                Console.Clear();
+                PathSelect(2,1);
             }
             else
             {
@@ -66,8 +61,20 @@ namespace TerminalDungeonMain
 
         }
 
-        static void PathSelect()
+        static void PathSelect(int _classNum, int _firstSetup)
         {
+            if (_firstSetup == 1)
+            {
+                if (_classNum == 1)
+                {
+                    
+                }
+                else if (_classNum == 2)
+                {
+
+                }
+            }
+
             Random rnd = new Random();
             int rndChance = rnd.Next(0,100);
 
@@ -77,22 +84,21 @@ namespace TerminalDungeonMain
                 NothingClass.nothingPath();
             }
 
-            Console.WriteLine("\nPress Enter key to continue. Press K to view your stats.");
-            int keyEnter = WaitForKeyDual(ConsoleKey.Enter, ConsoleKey.K);
-
-            if (keyEnter == 1)
+            Console.WriteLine("\nPress Enter to continue. Press K to view your stats.");
+            int optKey = WaitForKeyDual(ConsoleKey.Enter, ConsoleKey.K);
+            
+            if (optKey == 1)
             {
-                // Continue to code
+                
             }
-
-            if (keyEnter == 2)
+            else if (optKey == 2)
             {
                 Console.Clear();
-                Console.WriteLine("Test\nPress any key to continue.");
+                Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
             }
-
-            PathSelect();
+            
+            PathSelect(1,0);
         }
 
         static void WaitForKey(ConsoleKey key)
@@ -110,12 +116,14 @@ namespace TerminalDungeonMain
 
         static int WaitForKeyDual(ConsoleKey key1, ConsoleKey key2)
         {
-            if (Console.ReadKey(true).Key == key1)
+            ConsoleKey _key = Console.ReadKey(true).Key;
+
+            if (_key == key1)
             {
                 // Continue to code
                 return 1;
             }
-            else if (Console.ReadKey(true).Key == key2)
+            else if (_key == key2)
             {
                 // Continue to code
                 return 2;
@@ -191,7 +199,7 @@ namespace TerminalDungeonMain
                 break;
 
                 default:
-                    return "Fail";
+                    return SelectNumb();
                 break;
             }
         }
