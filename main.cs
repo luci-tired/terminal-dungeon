@@ -8,9 +8,6 @@ namespace TerminalDungeonMain
 {
     class MainClass
     {
-        public PlayerClass wizPlayer01 = new WizardClass(2, 5, 50, 0, 1, 5);
-        public PlayerClass kniPlayer01 = new KnightClass(2, 5, 50, 0, 1, 5);
-
         static void Main(string []args)
         {
             Console.SetCursorPosition(Console.WindowHeight - "Terminal Dungeon".Length / 2, Console.CursorTop); //Center text on screen
@@ -23,13 +20,13 @@ namespace TerminalDungeonMain
 
             Console.Clear();
 
-            string _name = InputName(); // Gets player name, will be used later for leaderboard
-
-            GameSetup();
+            string name = InputName(); // Gets player name, will be used later for leaderboard
+            
+            GameSetup(name);
             
         }
 
-        static void GameSetup()
+        static void GameSetup(string _name)
         {
             Console.Clear();
             Console.Write("\nPlease select a class\n 0) Wizard\n 1) Knight\n\n");
@@ -41,7 +38,7 @@ namespace TerminalDungeonMain
                 // Select wizard class
                 Console.ResetColor();
                 Console.Clear();
-                PathSelect(1,1);
+                PathSelect(_name,1,1);
                 
             }
             else if (input == "1")
@@ -49,29 +46,29 @@ namespace TerminalDungeonMain
                 // Select knight class
                 Console.ResetColor();
                 Console.Clear();
-                PathSelect(2,1);
+                PathSelect(_name,2,1);
             }
             else
             {
                 Console.ResetColor();
                 Console.Clear();
                 Console.WriteLine("Invalid Input!");
-                GameSetup();
+                GameSetup(_name);
             }
 
         }
 
-        static void PathSelect(int _classNum, int _firstSetup)
+        static void PathSelect(string _name, int _classNum, int _firstSetup)
         {
             if (_firstSetup == 1)
             {
                 if (_classNum == 1)
                 {
-                    
+                    PlayerClass wizPlayer01 = new PlayerClass(_name, 1, 2, 15, 50, 0, 1, 5, 15);
                 }
                 else if (_classNum == 2)
                 {
-
+                    PlayerClass kniPlayer01 = new PlayerClass(_name, 2, 2, 15, 50, 0, 1, 5, 15);
                 }
             }
 
@@ -94,11 +91,12 @@ namespace TerminalDungeonMain
             else if (optKey == 2)
             {
                 Console.Clear();
+                Console.WriteLine(_name);
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
             }
             
-            PathSelect(1,0);
+            PathSelect(_name,1,0);
         }
 
         static void WaitForKey(ConsoleKey key)
