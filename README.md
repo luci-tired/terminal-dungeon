@@ -1,3 +1,3 @@
 # terminal-dungeon
 An infinite dungeon game in the command line. Written in C#.
-This is my first real project so its going to be trash but I got to start somewhere.
+This one of my first projects that I will probably finish, so it will be a bit messy but I hope it will be a bit fun.
