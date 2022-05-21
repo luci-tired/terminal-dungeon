@@ -4,10 +4,12 @@ using Player;
 using Nothing;
 
 
-namespace TerminalDungeonMain
+namespace TDMain
 {
     class MainClass
     {
+        public static PlayerClass player01 = new PlayerClass(2, 15, 50, 0, 1, 5, 15);
+
         static void Main(string []args)
         {
             Console.SetCursorPosition(Console.WindowHeight - "Terminal Dungeon".Length / 2, Console.CursorTop); //Center text on screen
@@ -64,21 +66,43 @@ namespace TerminalDungeonMain
             {
                 if (_classNum == 1)
                 {
-                    PlayerClass wizPlayer01 = new PlayerClass(_name, 1, 2, 15, 50, 0, 1, 5, 15);
+                    player01.setClassType(1);
                 }
                 else if (_classNum == 2)
                 {
-                    PlayerClass kniPlayer01 = new PlayerClass(_name, 2, 2, 15, 50, 0, 1, 5, 15);
+                    player01.setClassType(2);
                 }
+                player01.setName(_name);
             }
-
+    
             Random rnd = new Random();
-            int rndChance = rnd.Next(0,100);
+            int rndChance = rnd.Next(1, 101);
 
-            if (rndChance < 100) // 6.25% chance
+            if (0 <= rndChance && rndChance <= 6) // 6%
             {
                 Console.Clear();
-                NothingClass.nothingPath();
+                int _addXp = NothingClass.nothingPath();
+                player01.addXp(_addXp);
+            }
+
+            if (6 <= rndChance && rndChance <= 20) // 14%
+            {
+                
+            }
+
+            if (20 <= rndChance && rndChance <= 40) // 20%
+            {
+                
+            }
+
+            if (40 <= rndChance && rndChance <= 70) // 30%
+            {
+                
+            }
+
+            if (70 <= rndChance && rndChance <= 100) // 30%
+            {
+                
             }
 
             Console.WriteLine("\nPress Enter to continue. Press K to view your stats.");
@@ -86,17 +110,36 @@ namespace TerminalDungeonMain
             
             if (optKey == 1)
             {
-                
+                PathSelect(_name,1,0);
             }
             else if (optKey == 2)
             {
                 Console.Clear();
-                Console.WriteLine(_name);
+                Console.ResetColor();
+                Console.Write("Name : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.name);
+                Console.ResetColor();
+
+                Console.Write("Class Type : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.className);
+                Console.ResetColor();
+
+                Console.Write("Level : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.lvl);
+                Console.ResetColor();
+
+                Console.Write("XP : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.xp + "/" + player01.xpLmt);
+                Console.ResetColor();
+
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
+                PathSelect(_name,1,0);
             }
-            
-            PathSelect(_name,1,0);
         }
 
         static void WaitForKey(ConsoleKey key)
