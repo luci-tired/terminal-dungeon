@@ -10,19 +10,18 @@ namespace Player
         public int specialAtk;
         public int hp;
         public int cash;
-        public int lvlLmt = 10;
+        public int xpLmt = 100;
         public int maxHP;
-        public int classType;
         public int abiltiytype;
 
         public string normalATK;
         public string specialATK;
         public string name;
+        public string className;
 
-        public PlayerClass(string _name, int _classType, int _atk, int _hp, int _cash, int _xp, int _lvl, int _specialAtk, int _maxHP)
+        public PlayerClass(int _atk, int _hp, int _cash, int _xp, int _lvl, int _specialAtk, int _maxHP)
         {
             // Incomplete
-            name = _name;
             xp = _xp;
             hp = _hp;
             atk = _atk;
@@ -30,29 +29,45 @@ namespace Player
             lvl = _lvl;
             specialAtk = _specialAtk;
             maxHP = _maxHP;
-            classType = _classType;
+        }
 
-            if (classType == 1) // Wizard
+        public void setClassType(int _num)
+        {
+            if (_num == 1) // Wizard
             {
+                className = "Wizard";
                 normalATK = "Fireball";
                 specialATK = "Lightning Bolt";
                 abiltiytype = 2; // Heal
             }
-            else if (classType == 2) // Knight
+            else if (_num == 2) // Knight
             {
+                className = "Knight";
                 normalATK = "Swing";
                 specialATK = "Spin";
                 abiltiytype = 1; // Block
             }
         }
 
+        public void setName(string _name)
+        {
+            name = _name;
+        }
+
         public void addXp(int _xp)
         {
             xp += _xp;
-            if (lvlLmt <= xp)
+            if (xpLmt <= xp)
             {
-                xp = 0;
-                lvlLmt += 10;
+                if (xpLmt < xp)
+                {
+                    xp = xp - xpLmt;
+                }
+                else
+                {
+                    xp = 0;
+                }
+                xpLmt += 100;
                 lvl++;
             }
         }
