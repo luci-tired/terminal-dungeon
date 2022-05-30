@@ -2,6 +2,7 @@
 using System.IO;
 using Player;
 using Nothing;
+using Battle;
 
 
 namespace TDMain
@@ -12,10 +13,10 @@ namespace TDMain
 
         static void Main(string []args)
         {
-            Console.SetCursorPosition(Console.WindowHeight - "Terminal Dungeon".Length / 2, Console.CursorTop); //Center text on screen
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "Terminal Dungeon".Length / 2, Console.CursorTop); //Center text on screen
             Console.WriteLine("Terminal Dungeon");
 
-            Console.SetCursorPosition(Console.WindowHeight - "Press Enter to begin...".Length / 2, Console.CursorTop + 1);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "Press Enter to begin...".Length / 2, Console.CursorTop + 1);
             Console.WriteLine("Press Enter to begin...");
 
             WaitForKey(ConsoleKey.Enter);
@@ -87,22 +88,26 @@ namespace TDMain
 
             if (6 <= rndChance && rndChance <= 20) // 14%
             {
-                
+                Console.Clear();
+                BattleClass.newEnemy();
             }
 
             if (20 <= rndChance && rndChance <= 40) // 20%
             {
-                
+                Console.Clear();
+                BattleClass.newEnemy();
             }
 
             if (40 <= rndChance && rndChance <= 70) // 30%
             {
-                
+                Console.Clear();
+                BattleClass.newEnemy();
             }
 
             if (70 <= rndChance && rndChance <= 100) // 30%
             {
-                
+                Console.Clear();
+                BattleClass.newEnemy();
             }
 
             Console.WriteLine("\nPress Enter to continue. Press K to view your stats.");
@@ -126,6 +131,11 @@ namespace TDMain
                 Console.WriteLine(player01.className);
                 Console.ResetColor();
 
+                Console.Write("Money : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.cash);
+                Console.ResetColor();
+
                 Console.Write("Level : ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(player01.lvl);
@@ -136,7 +146,34 @@ namespace TDMain
                 Console.WriteLine(player01.xp + "/" + player01.xpLmt);
                 Console.ResetColor();
 
-                Console.WriteLine("Press any key to continue.");
+
+                Console.WriteLine();
+                Console.Write("NormalAtk | " + player01.normalATK + " : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.atk);
+                Console.ResetColor();
+
+                Console.Write("SpecialAtk | " + player01.specialATK + " : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(player01.specialAtk);
+                Console.ResetColor();
+                
+                if (player01.abiltiytype == 1)
+                {
+                    Console.Write("Ability | Block" + " : ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("HIGHLVL 75% | LOWLVL 25%");
+                    Console.ResetColor();
+                }
+                if (player01.abiltiytype == 2)
+                {
+                    Console.Write("Ability | Heal" + " : ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("2HP");
+                    Console.ResetColor();
+                }
+
+                Console.WriteLine("\nPress any key to continue.");
                 Console.ReadKey();
                 PathSelect(_name,1,0);
             }
@@ -195,7 +232,7 @@ namespace TDMain
             }
         }
 
-        static string SelectNumb()
+        public static string SelectNumb()
         {
             switch (Console.ReadLine())
             {
