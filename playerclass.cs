@@ -6,12 +6,12 @@ namespace Player
     {
         public int xp;
         public int lvl;
-        public int atk;
-        public int specialAtk;
-        public int hp;
-        public int cash;
+        public double atk;
+        public double specialAtk;
+        public double hp;
+        public double cash;
         public int xpLmt = 100;
-        public int maxHP;
+        public double maxHP;
         public int abiltiytype;
 
         public string normalATK;
@@ -19,7 +19,7 @@ namespace Player
         public string name;
         public string className;
 
-        public PlayerClass(int _atk, int _hp, int _cash, int _xp, int _lvl, int _specialAtk, int _maxHP)
+        public PlayerClass(double _atk, double _hp, double _cash, int _xp, int _lvl, double _specialAtk, double _maxHP)
         {
             // Incomplete
             xp = _xp;
