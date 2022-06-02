@@ -16,6 +16,7 @@ namespace Player
 
         public string normalATK;
         public string specialATK;
+        public string abiltiyName;
         public string name;
         public string className;
 
@@ -39,6 +40,7 @@ namespace Player
                 normalATK = "Fireball";
                 specialATK = "Lightning Bolt";
                 abiltiytype = 2; // Heal
+                abiltiyName = "Heal";
             }
             else if (_num == 2) // Knight
             {
@@ -46,6 +48,7 @@ namespace Player
                 normalATK = "Swing";
                 specialATK = "Spin";
                 abiltiytype = 1; // Block
+                abiltiyName = "Block";
             }
         }
 
