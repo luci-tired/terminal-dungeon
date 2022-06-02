@@ -48,43 +48,8 @@ namespace Battle
             {
                 Console.Write("_");
             }
-            Console.WriteLine();
-            SelectOpt();
-        }
-
-        public static string SelectOpt()
-        {
-            Console.SetCursorPosition(Console.WindowWidth / 2 - " 1) Attack   2) Items".Length / 2, Console.CursorTop);
-            Console.WriteLine(" 1) Attack   2) Items");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - "3) Ability   4) Run".Length / 2, Console.CursorTop);
-            Console.WriteLine("3) Ability  4) Run");
-
-            string input = MainClass.SelectNumb();
-
-            if (input == "1")
-            {
-                return input;
-            }
-
-            else if (input == "2")
-            {
-                return input;
-            }
-
-            else if (input == "3")
-            {
-                return input;
-            }
-
-            else if (input == "4")
-            {
-                return input;
-            }
-
-            else
-            {
-                return SelectOpt();
-            }
+            Console.Write("\n\n                                                \n                                                        ");
+            SelectOptMain();
         }
         
         public static void setLvl()
@@ -183,6 +148,8 @@ namespace Battle
                 }
             }
         }
+
+
 
         public static void setStats()
         {
@@ -314,6 +281,197 @@ namespace Battle
 
                     enemy01.hp = enemy01.maxHP; 
                 }
+            }
+        }
+
+        public static void resetMenu()
+        {
+            Console.SetCursorPosition(0, Console.CursorTop - 2);
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write(" ");
+            }
+            Console.WriteLine("\n");
+        }
+
+        public static string SelectOptMain()
+        {
+            resetMenu();
+            Console.SetCursorPosition(Console.WindowWidth / 2 - " 1) Attack          2) Items".Length / 2, Console.CursorTop - 5);
+            Console.WriteLine(" 1) Attack          2) Items");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "3) Ability   4) Run".Length / 2, Console.CursorTop);
+            Console.WriteLine("3) " + player01.abiltiyName + "            4) Run");
+
+
+            string input = MainClass.SelectNumb();
+
+            if (input == "1")
+            {
+                SelectOptOne();
+                return input;
+            }
+
+            else if (input == "2")
+            {
+                SelectOptTwo();
+                return input;
+            }
+
+            else if (input == "3")
+            {
+                SelectOptThree();
+                return input;
+            }
+
+            else if (input == "4")
+            {
+                SelectOptFour();
+                return input;
+            }
+            else
+            {
+                return SelectOptMain();
+            }
+        }
+
+        public static string SelectOptOne()
+        {
+            resetMenu();
+            Console.SetCursorPosition(Console.WindowWidth / 2 - ("          1) " + player01.normalATK + "     2) " + player01.specialATK + "          ").Length / 2, Console.CursorTop - 5);
+            Console.WriteLine("          1) " + player01.normalATK + "     2) " + player01.specialATK + "          ");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "          0) Back          ".Length / 2, Console.CursorTop);
+            Console.WriteLine("          0) Back          ");
+
+            string input = MainClass.SelectNumb();
+
+            if (input == "1")
+            {
+                return input;
+            }
+
+            else if (input == "2")
+            {
+                return input;
+            }
+
+            else if (input == "0")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else
+            {
+                return SelectOptOne();
+            }
+        }
+
+        public static string SelectOptTwo()
+        {
+            resetMenu();
+            Console.SetCursorPosition(Console.WindowWidth / 2 - ("          1) Placeholder     2) Placeholder          ").Length / 2, Console.CursorTop - 5);
+            Console.WriteLine("          1) Placeholder     2) Placeholder          ");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "          0) Back          ".Length / 2, Console.CursorTop);
+            Console.WriteLine("          0) Back          ");
+
+            string input = MainClass.SelectNumb();
+
+            if (input == "1")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else if (input == "2")
+            {
+                SelectOptMain();
+                return input;
+            }
+            
+            else if (input == "0")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else
+            {
+                return SelectOptTwo();
+            }
+        }
+
+        public static string SelectOptThree()
+        {
+            resetMenu();
+            Console.SetCursorPosition(Console.WindowWidth / 2 - ("          1) Placeholder     2) Placeholder          ").Length / 2, Console.CursorTop - 5);
+            Console.WriteLine("          1) Placeholder     2) Placeholder          ");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "          0) Back          ".Length / 2, Console.CursorTop);
+            Console.WriteLine("          0) Back          ");
+
+            string input = MainClass.SelectNumb();
+
+            if (input == "1")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else if (input == "2")
+            {
+                SelectOptMain();
+                return input;
+            }
+            
+            else if (input == "0")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else
+            {
+                return SelectOptThree();
+            }
+        }
+
+        public static string SelectOptFour()
+        {
+            resetMenu();
+            Console.SetCursorPosition(Console.WindowWidth / 2 - ("          1) Placeholder     2) Placeholder          ").Length / 2, Console.CursorTop - 5);
+            Console.WriteLine("          1) Placeholder     2) Placeholder          ");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - "          0) Back          ".Length / 2, Console.CursorTop);
+            Console.WriteLine("          0) Back          ");
+
+            string input = MainClass.SelectNumb();
+
+            if (input == "1")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else if (input == "2")
+            {
+                SelectOptMain();
+                return input;
+            }
+            
+            else if (input == "0")
+            {
+                SelectOptMain();
+                return input;
+            }
+
+            else
+            {
+                return SelectOptFour();
             }
         }
     }
